@@ -1,0 +1,7 @@
+.form__fieldset {
+    border: 2px solid #034303;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f2f2f3c9;
+    box-shadow: 5px 4px 18px -4px #557A59;
+}
