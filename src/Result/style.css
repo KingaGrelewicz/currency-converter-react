@@ -1,5 +1,8 @@
 .result {
     padding: 20px 0;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
 }
 
 .form__button {

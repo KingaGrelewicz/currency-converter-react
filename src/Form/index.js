@@ -1,5 +1,4 @@
 import "./style.css";
-import { useState } from 'react';
 
 const Form = ({ currencies, selectedCurrency, amount, setSelectedCurrency, setAmount }) => {
 
@@ -21,7 +20,7 @@ const Form = ({ currencies, selectedCurrency, amount, setSelectedCurrency, setAm
         >
           <option value="">Wybierz walutę</option>
           {currencies?.map(currency => (
-            <option key={currency.id} value={currency.value}>
+            <option key={currency.id} value={currency.id}>
               {currency.name}
             </option>
           ))}
