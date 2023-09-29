@@ -6,21 +6,21 @@ import Form from "./Form";
 import Result from "./Result";
 
 function App() {
-  const [currencies, setCurrency] = useState([
-    { id: 1, name: "Euro", value: 4.6 },
-    { id: 2, name: "Dolar amerykański", value: 4.32 },
-    { id: 3, name: "Funt brytyjski", value: 5.30 },
+  const [currencies, setCurrencies] = useState([
+    { id: 1, name: "Euro", value: 4.6, shortcut: "EUR" },
+    { id: 2, name: "Dolar amerykański", value: 4.32, shortcut: "USD" },
+    { id: 3, name: "Funt brytyjski", value: 5.30, shortcut: "GBP" },
   ]);
   const [selectedCurrency, setSelectedCurrency] = useState("");
   const [amount, setAmount] = useState("");
   const [result, setResult] = useState("");
 
   const calculateResult = () => {
-    const selectedCurrency = currencies.find(currency => currency.id === selectedCurrency);
+    const calculateCurrency = currencies.find(currency => currency.id === Number(selectedCurrency));
 
-    if (selectedCurrency) {
-      const calculatedResult = amount / selectedCurrency.value;
-      setResult(calculatedResult);
+    if (calculateCurrency) {
+      const calculatedResult = amount / calculateCurrency.value;
+      setResult(calculatedResult.toFixed(2));
     }
   };
 
@@ -36,8 +36,8 @@ function App() {
           setSelectedCurrency={setSelectedCurrency}
           setAmount={setAmount}
         />
+        <button onClick={calculateResult} className="form__button">Przelicz</button>
         <Result
-          calculateResult={calculateResult}
           result={result}
         />
       </fieldset>
