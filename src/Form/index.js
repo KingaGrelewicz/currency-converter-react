@@ -48,4 +48,4 @@ const Form = ({ currencies }) => {
   )
 }
 
-export default Form;
+export { Form, selectedCurrency };
