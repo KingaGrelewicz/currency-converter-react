@@ -1,13 +1,12 @@
 import "./style.css";
 
-const Result = ({ calculateResult }) => {
+const Result = ({ result }) => {
    return (
       <>
-         <button onClick={() => calculateResult()} className="form__button">Przelicz</button>
          <span
             className="result"
          >
-            {calculateResult}
+            {result}
          </span>
       </>
    )
