@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Container from "./Container";
 import Title from "./Title";
 import RequiredText from "./RequiredText";
-import { Form, selectedCurrency } from "./Form";
+import Form from "./Form";
 import Result from "./Result";
 
 function App() {
@@ -11,14 +11,17 @@ function App() {
     { id: 2, name: "Dolar amerykański", value: 4.32 },
     { id: 3, name: "Funt brytyjski", value: 5.30 },
   ]);
+  const [selectedCurrency, setSelectedCurrency] = useState("");
+  const [amount, setAmount] = useState("");
   const [result, setResult] = useState("");
 
   const calculateResult = () => {
-    setResult(currencies = currencies.find(currency => currency.id === selectedCurrency))
+    const selectedCurrency = currencies.find(currency => currency.id === selectedCurrency);
 
-    if (selectedCurrency)
-      return amount.value / selectedCurrency.value;
-
+    if (selectedCurrency) {
+      const calculatedResult = amount / selectedCurrency.value;
+      setResult(calculatedResult);
+    }
   };
 
   return (
@@ -26,9 +29,14 @@ function App() {
       <fieldset className="form__fieldset">
         <Title />
         <RequiredText />
-        <Form currencies={currencies} />
-        <Result
+        <Form
           currencies={currencies}
+          selectedCurrency={selectedCurrency}
+          amount={amount}
+          setSelectedCurrency={setSelectedCurrency}
+          setAmount={setAmount}
+        />
+        <Result
           calculateResult={calculateResult}
           result={result}
         />

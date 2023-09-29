@@ -1,9 +1,7 @@
 import "./style.css";
 import { useState } from 'react';
 
-const Form = ({ currencies }) => {
-  const [selectedCurrency, setSelectedCurrency] = useState("");
-  const [amount, setAmount] = useState("");
+const Form = ({ currencies, selectedCurrency, amount, setSelectedCurrency, setAmount }) => {
 
   const onSelectChange = ({ target }) => setSelectedCurrency(target.value);
   const onAmountChange = ({ target }) => setAmount(target.value);
@@ -48,4 +46,4 @@ const Form = ({ currencies }) => {
   )
 }
 
-export { Form, selectedCurrency };
+export default Form;
