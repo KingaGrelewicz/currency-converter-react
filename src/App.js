@@ -4,6 +4,7 @@ import Title from "./Title";
 import RequiredText from "./RequiredText";
 import Form from "./Form";
 import Result from "./Result";
+import Button from "./Button";
 
 function App() {
   const [currencies, setCurrencies] = useState([
@@ -38,7 +39,9 @@ function App() {
           setSelectedCurrency={setSelectedCurrency}
           setAmount={setAmount}
         />
-        <button onClick={calculateResult} className="form__button">Przelicz</button>
+        <Button 
+          calculateResult={calculateResult}
+        />
         <Result
           result={result}
           amount={amount}
