@@ -4,3 +4,12 @@
     margin: 50px auto;
     font-family: 'Open Sans', sans-serif;
 }
+
+@media (max-width: 570px) {
+    .container {
+        margin: 50px auto;
+        padding: 10px;
+        max-width: 100%;
+  
+    }
+}
