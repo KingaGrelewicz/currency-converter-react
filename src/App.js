@@ -7,20 +7,22 @@ import Result from "./Result";
 
 function App() {
   const [currencies, setCurrencies] = useState([
-    { id: 1, name: "Euro", value: 4.6, shortcut: "EUR" },
-    { id: 2, name: "Dolar amerykański", value: 4.32, shortcut: "USD" },
-    { id: 3, name: "Funt brytyjski", value: 5.30, shortcut: "GBP" },
+    { id: 1, name: "Euro", value: 4.6, output: "EUR" },
+    { id: 2, name: "Dolar amerykański", value: 4.32, output: "USD" },
+    { id: 3, name: "Funt brytyjski", value: 5.30, output: "GBP" },
   ]);
   const [selectedCurrency, setSelectedCurrency] = useState("");
   const [amount, setAmount] = useState("");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState(null);
 
   const calculateResult = () => {
-    const calculateCurrency = currencies.find(currency => currency.id === Number(selectedCurrency));
+    const calculateCurrency = currencies.find((currency) => currency.id === Number(selectedCurrency));
 
     if (calculateCurrency) {
-      const calculatedResult = amount / calculateCurrency.value;
-      setResult(calculatedResult.toFixed(2));
+      const calculatedResult = (amount / calculateCurrency.value).toFixed(2);
+      setResult(`${amount} PLN = ${calculatedResult} ${calculateCurrency.output}`);
+    } else {
+      setResult(null);
     }
   };
 
@@ -39,6 +41,8 @@ function App() {
         <button onClick={calculateResult} className="form__button">Przelicz</button>
         <Result
           result={result}
+          amount={amount}
+          selectedCurrency={selectedCurrency}
         />
       </fieldset>
     </Container>
