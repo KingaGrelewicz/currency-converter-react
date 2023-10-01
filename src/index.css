@@ -6,9 +6,8 @@ html {
   box-sizing: inherit;
 }
 
-.body {
-  background-size: cover;
-  background-position: center;
+body {
   background-image: url("../public/background01.jpg");
+  background-size: cover;
 }
 
