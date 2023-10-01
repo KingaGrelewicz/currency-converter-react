@@ -1,6 +1,6 @@
 # Currency Converter
 
-# Description
+## Description
 It's the simple currency converter
 First you need to choose the currency and then fill up the form with your amount of polish zloty and push the button. Then currency converter count the amount for you, and you will know how much money you should get in chosen currency.
 
