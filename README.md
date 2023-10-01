@@ -6,7 +6,11 @@ First you need to choose the currency and then fill up the form with your amount
 
 The exchange of a given currency is constant from the date 10.06.23. The app doesn't connect to any server with exchange rates. This is the next step to develop this app.
 
-This project was bootstrapped with [Create React App](https://kingagrelewicz.github.io/currency-converter-react/).
+This project was bootstrapped with Create React App
+Demo [Link]
+(https://kingagrelewicz.github.io/currency-converter-react/).
+
+![currencyConverter gif](public/currencyConverter.gif)
 
 ## Technologies
 During creating the website I was using Visual Studio Code,
