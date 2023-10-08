@@ -1,55 +1,32 @@
-import { useState } from 'react';
-import Container from "./Container";
-import Title from "./Title";
-import RequiredText from "./RequiredText";
-import Form from "./Form";
-import Result from "./Result";
-import Button from "./Button";
+  import { useState } from 'react';
+  import Container from "./Container";
+  import { currencies } from "./Form/currencies";
+  import { Form } from "./Form";
 
-function App() {
-  const [currencies, setCurrencies] = useState([
-    { id: 1, name: "Euro", value: 4.6, output: "EUR" },
-    { id: 2, name: "Dolar amerykański", value: 4.32, output: "USD" },
-    { id: 3, name: "Funt brytyjski", value: 5.30, output: "GBP" },
-  ]);
-  const [selectedCurrency, setSelectedCurrency] = useState("");
-  const [amount, setAmount] = useState("");
-  const [result, setResult] = useState(null);
+  function App() {
+    
+    const [result, setResult] = useState();
 
-  const calculateResult = () => {
-    const calculateCurrency = currencies.find((currency) => currency.id === Number(selectedCurrency));
+    const calculateResult = (currency, amount) => {
+      const rate = currencies
+        .find(({ short }) => short === currency)
+        .rate;
 
-    if (calculateCurrency) {
-      const calculatedResult = (amount / calculateCurrency.value).toFixed(2);
-      setResult(`${amount} PLN = ${calculatedResult} ${calculateCurrency.output}`);
-    } else {
-      setResult(null);
+      setResult({
+        sourceAmount: +amount,
+        targetAmount: amount / rate,
+        currency,
+      });
     }
-  };
 
-  return (
-    <Container>
-      <fieldset className="form__fieldset">
-        <Title />
-        <RequiredText />
+    return (
+      <Container>
         <Form
-          currencies={currencies}
-          selectedCurrency={selectedCurrency}
-          amount={amount}
-          setSelectedCurrency={setSelectedCurrency}
-          setAmount={setAmount}
-        />
-        <Button 
+          result={result}
           calculateResult={calculateResult}
         />
-        <Result
-          result={result}
-          amount={amount}
-          selectedCurrency={selectedCurrency}
-        />
-      </fieldset>
-    </Container>
-  );
-}
+      </Container>
+    );
+  }
 
-export default App;
+  export default App; 
