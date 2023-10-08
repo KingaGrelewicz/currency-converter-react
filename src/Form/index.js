@@ -1,6 +1,6 @@
 import "./style.css";
 
-const Form = ({ currencies, selectedCurrency, amount, setSelectedCurrency, setAmount }) => {
+const Form = ({ currencies, selectedCurrency, amount, setSelectedCurrency, setAmount, calculateResult }) => {
 
   const onSelectChange = ({ target }) => setSelectedCurrency(target.value);
   const onAmountChange = ({ target }) => setAmount(target.value);
@@ -41,6 +41,7 @@ const Form = ({ currencies, selectedCurrency, amount, setSelectedCurrency, setAm
           required
           autoFocus />
       </label>
+      <button onClick={calculateResult} className="form__button">Przelicz</button>
     </form>
   )
 }
