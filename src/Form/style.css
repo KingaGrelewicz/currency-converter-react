@@ -9,6 +9,9 @@
 .form__name{
     color:#1d1d1e;
     font-style: italic;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
 }
 
 .form__labelName {
@@ -70,11 +73,11 @@
     width: 100%;
     font-size: 12px;
     font-style: italic;
-    padding: 10px 0;
 }
 
 .form__date {
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-start;
+    padding: 10px;
 }
