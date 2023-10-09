@@ -1,0 +1,6 @@
+.form__date {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    padding: 10px;
+}
