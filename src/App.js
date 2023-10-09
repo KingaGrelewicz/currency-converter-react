@@ -1,32 +1,53 @@
-  import { useState } from 'react';
-  import Container from "./Container";
-  import { currencies } from "./Form/currencies";
-  import { Form } from "./Form";
+import { useEffect, useState } from 'react';
+import Container from "./Container";
+import { currencies } from "./Form/currencies";
+import { Form } from "./Form";
 
-  function App() {
-    
-    const [result, setResult] = useState();
+function App() {
+  const [date, setDate] = useState(new Date());
+  const currentDate = date.toLocaleString(undefined, {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric"
+  });
 
-    const calculateResult = (currency, amount) => {
-      const rate = currencies
-        .find(({ short }) => short === currency)
-        .rate;
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setDate(new Date(date.getTime() + 1000));
+    }, 1000);
 
-      setResult({
-        sourceAmount: +amount,
-        targetAmount: amount / rate,
-        currency,
-      });
-    }
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [date]);
 
-    return (
-      <Container>
-        <Form
-          result={result}
-          calculateResult={calculateResult}
-        />
-      </Container>
-    );
+  const [result, setResult] = useState();
+
+  const calculateResult = (currency, amount) => {
+    const rate = currencies
+      .find(({ short }) => short === currency)
+      .rate;
+
+    setResult({
+      sourceAmount: +amount,
+      targetAmount: amount / rate,
+      currency,
+    });
   }
 
-  export default App; 
+  return (
+    <Container>
+      <Form
+        currentDate={currentDate}
+        result={result}
+        calculateResult={calculateResult}
+      />
+    </Container>
+  );
+}
+
+export default App; 

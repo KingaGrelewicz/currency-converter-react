@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { currencies } from "./currencies";
 import { Result } from "./Result";
 
-export const Form = ({ result, calculateResult }) => {
+export const Form = ({ result, calculateResult, currentDate }) => {
   const [currency, setCurrency] = useState("");
   const [amount, setAmount] = useState("");
 
@@ -17,6 +17,7 @@ export const Form = ({ result, calculateResult }) => {
 
   return (
     <form className="form" onSubmit={onFormSubmit}>
+      <span className="form__date">Dzisiaj jest {currentDate}</span>
       <h1 className="form__name">Kalkulator walut</h1>
       <p className="form__requiredText">
         Pola wymagane oznaczone są *
