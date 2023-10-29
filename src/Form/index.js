@@ -1,8 +1,8 @@
-import "./style.css";
 import { useState } from 'react';
 import { currencies } from "./currencies";
 import { Result } from "./Result";
 import { Clock } from "./Clock";
+import { StyledForm, Name, LabelName, FormElement, FormButton, RequiredText } from "./styled";
 
 export const Form = ({ result, calculateResult, currentDate }) => {
   const [currency, setCurrency] = useState("");
@@ -17,21 +17,19 @@ export const Form = ({ result, calculateResult, currentDate }) => {
   };
 
   return (
-    <form className="form" onSubmit={onFormSubmit}>
+    <StyledForm onSubmit={onFormSubmit}>
       <Clock currentDate={currentDate}/>
-      <h1 className="form__name">Kalkulator walut</h1>
-      <p className="form__requiredText">
+      <Name className="form__name">Kalkulator walut</Name>
+      <RequiredText>
         Pola wymagane oznaczone są *
-      </p>
+      </RequiredText>
       <p>
-        <label className="form__labelName"> Wybierz walutę:
-          <select
+        <LabelName> Wybierz walutę:
+          <FormElement
             value={currency}
             onChange={onSelectChange}
-            className="form__element"
-            name="selectElement"
+            name="formElement"
           >
-            <option value="">Wybierz walutę</option>
             {currencies.map((currency => (
               <option
                 key={currency.short}
@@ -40,13 +38,14 @@ export const Form = ({ result, calculateResult, currentDate }) => {
                 {currency.name}
               </option>
             )))}
-          </select>
-        </label>
+          </FormElement>
+        </LabelName>
       </p>
       <p>
-        <label className="form__labelName">
+        <LabelName>
           Kwota w złotówkach*:
-          <input
+          <FormElement
+            as="input"
             value={amount}
             onChange={onAmountChange}
             className="form__element"
@@ -57,13 +56,13 @@ export const Form = ({ result, calculateResult, currentDate }) => {
             placeholder="100"
             step="any"
             required
-            autoFocus />
-        </label>
+          />
+        </LabelName>
       </p>
       <p>
-        <button className="form__button">Przelicz</button>
+        <FormButton>Przelicz</FormButton>
       </p>
       <Result result={result} />
-    </form>
+    </StyledForm>
   )
 }

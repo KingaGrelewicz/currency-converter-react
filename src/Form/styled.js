@@ -1,42 +1,42 @@
-.form {
+import styled from "styled-components"
+
+export const StyledForm = styled.form`
     border: 2px solid #034303;
     border-radius: 10px;
     padding: 10px 20px;
     background-color: #f2f2f3;
     box-shadow: 5px 4px 18px -4px #557A59;
-}
+`;
 
-.form__name{
+export const Name = styled.h1`
     color:#1d1d1e;
     font-style: italic;
     font-size: 40px;
     display: flex;
     justify-content: center;
-}
+`;
 
-.form__labelName {
+export const LabelName = styled.label`
     display: grid;
     grid-template-columns: auto 350px;
     grid-gap: 12px;
     align-items: center;
-}
 
-@media (max-width: 570px) {
-    .form__labelName {
+    @media (max-width: 570px) {
         display: flex;
         flex-wrap: wrap;
     }
-}
+`;
 
-.form__element {
+export const FormElement = styled.select`
     border: 2px solid #034303;
     border-radius: 10px;
     padding: 10px;
     width: 100%;
-}
+`;
 
 
-.form__button {
+export const FormButton = styled.button`    
     color: #f0f8ff;
     background-color: #034303;
     border-radius: 10px;
@@ -47,19 +47,17 @@
     box-shadow: 5px 4px 18px -4px #557A59;
     cursor: pointer;
     transition: 0.5s;
-}
 
-.form__button:hover {
-    background-color: hsl(120, 91%, 30%);
-    transform: scale(1.05);
-}
+    &:hover {
+        background-color: hsl(120, 91%, 30%);
+        transform: scale(1.05);
+    }
 
-.form__button:active {
-    background-color: hsl(120, 91%, 40%);
-}
+    &:active {
+        background-color: hsl(120, 91%, 40%);
+    }
 
-@media (max-width: 768px) {
-    .buttons__button {
+    @media (max-width: 768px) {
         display: grid;
         grid-template-columns: 1fr;
         justify-content: center;
@@ -67,10 +65,10 @@
         padding: 10px;
         margin: 0 auto;
     }
-}
+`;
 
-.form__requiredText {
+export const RequiredText = styled.p`
     width: 100%;
     font-size: 12px;
     font-style: italic;
-}
+`;
