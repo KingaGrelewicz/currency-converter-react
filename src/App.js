@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import Container from "./Container";
+import StyledContainer from "./Container";
 import { currencies } from "./Form/currencies";
 import { Form } from "./Form";
+import { GlobalStyled } from "./styled";
 
 function App() {
   const [result, setResult] = useState();
@@ -19,12 +20,13 @@ function App() {
   }
 
   return (
-    <Container>
+    <StyledContainer>
+      <GlobalStyled />
       <Form
         result={result}
         calculateResult={calculateResult}
       />
-    </Container>
+    </StyledContainer>
   );
 }
 
