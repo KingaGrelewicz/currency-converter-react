@@ -22,7 +22,7 @@ export const LabelName = styled.label`
     grid-gap: 12px;
     align-items: center;
 
-    @media (max-width: 570px) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
         display: flex;
         flex-wrap: wrap;
     }
@@ -57,7 +57,7 @@ export const FormButton = styled.button`
         background-color: hsl(120, 91%, 40%);
     }
 
-    @media (max-width: 768px) {
+    @media ${({ theme }) => theme.breakpoints.mobile}px {
         display: grid;
         grid-template-columns: 1fr;
         justify-content: center;

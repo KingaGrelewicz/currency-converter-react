@@ -6,7 +6,7 @@ export const StyledContainer = styled.main`
     margin: 50px auto;
     font-family: 'Open Sans', sans-serif;
     
-    @media (max-width: 570px) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
         margin: 50px auto;
         padding: 10px;
         max-width: 100%;

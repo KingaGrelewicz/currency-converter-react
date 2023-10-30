@@ -3,6 +3,13 @@ import StyledContainer from "./Container";
 import { currencies } from "./Form/currencies";
 import { Form } from "./Form";
 import { GlobalStyled } from "./styled";
+import { ThemeProvider } from 'styled-components';
+
+const theme = {
+  breakpoints: {
+    mobile: 570
+  },
+};
 
 function App() {
   const [result, setResult] = useState();
@@ -20,13 +27,15 @@ function App() {
   }
 
   return (
-    <StyledContainer>
-      <GlobalStyled />
-      <Form
-        result={result}
-        calculateResult={calculateResult}
-      />
-    </StyledContainer>
+    <ThemeProvider theme={theme}>
+      <StyledContainer>
+        <GlobalStyled />
+        <Form
+          result={result}
+          calculateResult={calculateResult}
+        />
+      </StyledContainer>
+    </ThemeProvider>
   );
 }
 
