@@ -17,13 +17,11 @@ During creating the website I was using Visual Studio Code,
 - CSS
 - JavaScript
 - Create React App
-- BEM convention 
+- Styled Components
+- Hooks 
 - ES6+ Features 
-- media query 
-- Google Fonts
-- Sharing debugger 
-- Flex
-- Grid
+
+The website was created to response correctly on desktop, tablets, and mobile devices thanks to using media queries. I used fonts available on Google Fonts, Sharing debugger and flexbox, grid and immutability.
 
 ## Available Scripts
 
