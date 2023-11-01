@@ -5,7 +5,7 @@ import { Clock } from "./Clock";
 import { StyledForm, Name, LabelName, FormElement, FormButton, RequiredText } from "./styled";
 
 export const Form = ({ result, calculateResult, currentDate }) => {
-  const [currency, setCurrency] = useState("");
+  const [currency, setCurrency] = useState(currencies[0].short);
   const [amount, setAmount] = useState("");
 
   const onSelectChange = ({ target }) => setCurrency(target.value);
