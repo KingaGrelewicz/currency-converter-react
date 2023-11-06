@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { currencies } from "./currencies";
 import { Result } from "./Result";
 import { Clock } from "./Clock";
-import { StyledForm, Name, LabelName, FormElement, FormButton, RequiredText } from "./styled";
+import { StyledForm, Heading, LabelName, FormElement, FormButton, RequiredText } from "./styled";
 
 export const Form = ({ result, calculateResult, currentDate }) => {
   const [currency, setCurrency] = useState(currencies[0].short);
@@ -19,7 +19,7 @@ export const Form = ({ result, calculateResult, currentDate }) => {
   return (
     <StyledForm onSubmit={onFormSubmit}>
       <Clock currentDate={currentDate}/>
-      <Name className="form__name">Kalkulator walut</Name>
+      <Heading>Kalkulator walut</Heading>
       <RequiredText>
         Pola wymagane oznaczone są *
       </RequiredText>
