@@ -8,7 +8,7 @@ export const StyledForm = styled.form`
     box-shadow: 5px 4px 18px -4px #557A59;
 `;
 
-export const Name = styled.h1`
+export const Heading = styled.h1`
     color:#1d1d1e;
     font-style: italic;
     font-size: 40px;
