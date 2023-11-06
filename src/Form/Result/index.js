@@ -1,7 +1,6 @@
 import { StyledResult } from "./styled";
 
 export const Result = ({ result }) => {
-   return (
       <StyledResult>
          {result !== undefined && (
             <>
@@ -12,5 +11,4 @@ export const Result = ({ result }) => {
             </>
          )}
       </StyledResult>
-   );
 };
