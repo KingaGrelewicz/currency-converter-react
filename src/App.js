@@ -1,24 +1,16 @@
 import { useState } from 'react';
 import StyledContainer from "./Container";
-import { currencies } from "./Form/currencies";
 import { Form } from "./Form";
 import { GlobalStyled } from "./styled";
-import { ThemeProvider } from 'styled-components';
-
-const theme = {
-  breakpoints: {
-    mobile: 570
-  },
-};
+import { useRatesData } from './Form/useRatesData';
 
 function App() {
   const [result, setResult] = useState();
-
+  const { rates, loading, error } = useRatesData();
+ 
   const calculateResult = (currency, amount) => {
-    const rate = currencies
-      .find(({ short }) => short === currency)
-      .rate;
-
+       const rate = rates.data[currency];
+    
     setResult({
       sourceAmount: +amount,
       targetAmount: amount / rate,
@@ -27,7 +19,6 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
       <StyledContainer>
         <GlobalStyled />
         <Form
@@ -35,7 +26,6 @@ function App() {
           calculateResult={calculateResult}
         />
       </StyledContainer>
-    </ThemeProvider>
   );
 }
 
