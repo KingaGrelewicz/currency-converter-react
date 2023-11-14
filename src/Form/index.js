@@ -1,11 +1,21 @@
 import { useState } from 'react';
-import { currencies } from "./currencies";
 import { Result } from "./Result";
 import { Clock } from "./Clock";
-import { StyledForm, Heading, LabelName, FormElement, FormButton, RequiredText } from "./styled";
+import { 
+  StyledForm, 
+  Heading, 
+  LabelName, 
+  FormElement, 
+  FormButton, 
+  RequiredText, 
+  ErrorComponent, 
+  LoadingComponent 
+} from "./styled";
+import { useRatesData } from "./useRatesData"
 
 export const Form = ({ result, calculateResult, currentDate }) => {
-  const [currency, setCurrency] = useState(currencies[0].short);
+  const { rates, loading, error } = useRatesData();
+  const [currency, setCurrency] = useState("");
   const [amount, setAmount] = useState("");
 
   const onSelectChange = ({ target }) => setCurrency(target.value);
@@ -16,9 +26,17 @@ export const Form = ({ result, calculateResult, currentDate }) => {
     calculateResult(currency, amount);
   };
 
+  // if (loading) {
+  //   return <LoadingComponent>Ładowanie danych...</LoadingComponent>;
+  // }
+
+  // if (error) {
+  //   return <ErrorComponent $error={error} />;
+  // }
+
   return (
     <StyledForm onSubmit={onFormSubmit}>
-      <Clock currentDate={currentDate}/>
+      <Clock currentDate={currentDate} />
       <Heading>Kalkulator walut</Heading>
       <RequiredText>
         Pola wymagane oznaczone są *
@@ -30,14 +48,14 @@ export const Form = ({ result, calculateResult, currentDate }) => {
             onChange={onSelectChange}
             name="formElement"
           >
-            {currencies.map((currency => (
+            {rates && Object.keys(rates.data).map((rateKey) => (
               <option
-                key={currency.short}
-                value={currency.short}
+                key={rateKey}
+                value={rates.data[rateKey].value}
               >
-                {currency.name}
+                {rateKey}
               </option>
-            )))}
+            ))}
           </FormElement>
         </LabelName>
       </p>
@@ -48,7 +66,6 @@ export const Form = ({ result, calculateResult, currentDate }) => {
             as="input"
             value={amount}
             onChange={onAmountChange}
-            className="form__element"
             type="number"
             name="amountElement"
             id="amountElement"
