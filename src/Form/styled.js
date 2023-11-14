@@ -1,15 +1,15 @@
 import styled from "styled-components"
 
 export const StyledForm = styled.form`
-    border: 2px solid #034303;
+    border: 2px solid ${({ theme }) => theme.colors.crusoe};
     border-radius: 10px;
     padding: 10px 20px;
-    background-color: #f2f2f3;
-    box-shadow: 5px 4px 18px -4px #557A59;
+    background-color: ${({theme}) => theme.colors.athensGray};
+    box-shadow: 5px 4px 18px -4px ${({theme}) => theme.colors.springLeaves};
 `;
 
 export const Heading = styled.h1`
-    color:#1d1d1e;
+    color: ${({theme}) => theme.colors.shark};
     font-style: italic;
     font-size: 40px;
     display: flex;
@@ -29,7 +29,7 @@ export const LabelName = styled.label`
 `;
 
 export const FormElement = styled.select`
-    border: 2px solid #034303;
+    border: 2px solid ${({ theme }) => theme.colors.crusoe};
     border-radius: 10px;
     padding: 10px;
     width: 100%;
@@ -37,24 +37,24 @@ export const FormElement = styled.select`
 
 
 export const FormButton = styled.button`    
-    color: #f0f8ff;
-    background-color: #034303;
+    color: ${({ theme }) => theme.colors.aliceBlue};
+    background-color: ${({ theme }) => theme.colors.crusoe};
     border-radius: 10px;
     border: none;
     margin: 10px 0;
     padding: 5px;
     width: 100%;
-    box-shadow: 5px 4px 18px -4px #557A59;
+    box-shadow: 5px 4px 18px -4px ${({theme}) => theme.colors.springLeaves};
     cursor: pointer;
     transition: 0.5s;
 
     &:hover {
-        background-color: hsl(120, 91%, 30%);
+        filter: brightness(120%);
         transform: scale(1.05);
     }
 
     &:active {
-        background-color: hsl(120, 91%, 40%);
+        filter: brightness(140%);
     }
 
     @media ${({ theme }) => theme.breakpoints.mobile}px {
@@ -71,4 +71,22 @@ export const RequiredText = styled.p`
     width: 100%;
     font-size: 12px;
     font-style: italic;
+`;
+
+export const ErrorComponent = styled.div`
+    color: ${({theme}) => theme.colors.monza};
+    border: 2px solid ${({ theme }) => theme.colors.crusoe};
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: ${({theme}) => theme.colors.athensGray};
+    box-shadow: 5px 4px 18px -4px ${({theme}) => theme.colors.springLeaves};
+`;
+
+export const LoadingComponent = styled.p`
+    color: ${({theme}) => theme.colors.shark};
+    border: 2px solid ${({ theme }) => theme.colors.crusoe};
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: ${({theme}) => theme.colors.athensGray};
+    box-shadow: 5px 4px 18px -4px ${({theme}) => theme.colors.springLeaves};
 `;
