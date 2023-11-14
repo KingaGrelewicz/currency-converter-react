@@ -1,0 +1,23 @@
+{
+    "meta": {
+      "last_updated_at": "2023-11-11T23:59:59Z"
+    },
+    "data": {
+      "CAD": {
+        "code": "CAD",
+        "value": 1.379880222
+      },
+      "EUR": {
+        "code": "EUR",
+        "value": 0.9360701646
+      },
+      "GBP": {
+        "code": "GBP",
+        "value": 0.8182101619
+      },
+      "USD": {
+        "code": "USD",
+        "value": 1
+      }
+    }
+  }
