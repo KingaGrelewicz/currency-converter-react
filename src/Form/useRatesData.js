@@ -18,7 +18,7 @@ export const useRatesData = () => {
 
                 await new Promise((resolve) => setTimeout(resolve, 1000));
 
-                const response = await axios.get("./rates.json");
+                const response = await axios.get("../rates.json");
                   
                 setRatesData({
                     rates: response.data,
