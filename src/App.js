@@ -6,13 +6,9 @@ import { useRatesData } from './Form/useRatesData';
 
 function App() {
   const [result, setResult] = useState("");
-  const { ratesData, status  } = useRatesData("");
+  const { ratesData  } = useRatesData("");
    
   const calculateResult = (currency, amount) => {
-    if (status === "loading") {
-      console.log("Dane o kursach są jeszcze ładowane. Poczekaj chwilę.");
-      return;
-    }
     if (ratesData && ratesData.status === "success" && ratesData.data) {
       const currencyData = ratesData.data.find(rate => rate.code === currency);
   
