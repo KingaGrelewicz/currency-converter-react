@@ -14,7 +14,7 @@ export const useRatesData = () => {
                 await new Promise((resolve) => setTimeout(resolve, 1000));
 
                 const response = await axios.get("../rates.json");
-                const metaDate = response.data.meta.someDate;
+                const metaDate = response.data.meta.last_updated_at;
 
                 const formattedDate = new Date(metaDate).toLocaleString();
 
@@ -23,11 +23,13 @@ export const useRatesData = () => {
                     data: Object.values(response.data),
                     date: formattedDate , 
                 });
-
-            } catch {
+                
+            } catch (error) {
+                console.error("Błąd ładowania danych:", error);
                 setRatesData({
                     status: "error",
                     data: null,
+                    date: null,
                 });
             }
         };
@@ -35,5 +37,8 @@ export const useRatesData = () => {
         fetchData();
     }, []);
 
-    return ratesData;
+    return {
+        ...ratesData,
+        formattedDate: ratesData.date,
+    };
 }

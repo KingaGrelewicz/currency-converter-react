@@ -2,9 +2,7 @@ import { FooterContainer } from "./styled";
 import { useRatesData } from '../useRatesData';
 
 export const Footer = () => {
-    const { date } = useRatesData();
-
-    const formattedDate = date ? date : "";
+    const { formattedDate } = useRatesData();
 
     return (
         <FooterContainer>
