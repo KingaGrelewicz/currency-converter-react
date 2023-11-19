@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Result } from "./Result";
 import { Clock } from "./Clock";
+import { useRatesData } from "./useRatesData"
+import { Footer } from "./Footer";
 import {
   StyledForm,
   Heading,
@@ -11,7 +13,6 @@ import {
   ErrorComponent,
   LoadingComponent
 } from "./styled";
-import { useRatesData } from "./useRatesData"
 
 export const Form = ({ result, calculateResult, currentDate }) => {
   const { status, ratesData } = useRatesData();
@@ -50,11 +51,11 @@ export const Form = ({ result, calculateResult, currentDate }) => {
               onChange={onSelectChange}
             >
               {ratesData && Object.keys(ratesData.data).map((rateKey) => (
-                <option
-                  key={rateKey}
-                  value={ratesData.data[rateKey].code}
-                >
-                  {rateKey}
+              <option
+                key={rateKey}
+                value={ratesData.code}
+              >
+                {rateKey}
                 </option>
               ))}
             </FormElement>
@@ -81,6 +82,7 @@ export const Form = ({ result, calculateResult, currentDate }) => {
           <FormButton>Przelicz</FormButton>
         </p>
         <Result result={result} />
+        <Footer />
       </StyledForm >
     )
   }
