@@ -4,7 +4,8 @@ import axios from 'axios';
 export const useRatesData = () => {
     const [ratesData, setRatesData] = useState({
         status: "loading",
-        data: null,
+        currencies: null,
+        rate: null,
         date: null,
     });
 
@@ -17,18 +18,20 @@ export const useRatesData = () => {
                 const metaDate = response.data.meta.last_updated_at;
 
                 const formattedDate = new Date(metaDate).toLocaleString();
-
+                console.log(ratesData);
                 setRatesData({
                     status: "success",
-                    data: Object.values(response.data),
-                    date: formattedDate , 
+                    currencies: response.data.data,
+                    rate: response.data.value,
+                    date: formattedDate, 
                 });
                 
             } catch (error) {
-                console.error("Błąd ładowania danych:", error);
+                console.error(error);
                 setRatesData({
                     status: "error",
-                    data: null,
+                    currencies: null,
+                    rate: null,
                     date: null,
                 });
             }
@@ -39,6 +42,5 @@ export const useRatesData = () => {
 
     return {
         ...ratesData,
-        formattedDate: ratesData.date,
     };
 }
