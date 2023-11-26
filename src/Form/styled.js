@@ -77,16 +77,20 @@ export const ErrorComponent = styled.div`
     color: ${({theme}) => theme.colors.monza};
     border: 2px solid ${({ theme }) => theme.colors.crusoe};
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 100px 20px;
     background-color: ${({theme}) => theme.colors.athensGray};
     box-shadow: 5px 4px 18px -4px ${({theme}) => theme.colors.springLeaves};
+    display: flex;
+    justify-content: center;
 `;
 
 export const LoadingComponent = styled.p`
     color: ${({theme}) => theme.colors.shark};
     border: 2px solid ${({ theme }) => theme.colors.crusoe};
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 100px 20px;
     background-color: ${({theme}) => theme.colors.athensGray};
     box-shadow: 5px 4px 18px -4px ${({theme}) => theme.colors.springLeaves};
+    display: flex;
+    justify-content: center;
 `;
