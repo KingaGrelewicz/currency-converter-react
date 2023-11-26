@@ -14,8 +14,8 @@ import {
   LoadingComponent
 } from "./styled";
 
-export const Form = ({ result, calculateResult, currentDate }) => {
-  const { status, ratesData } = useRatesData();
+export const Form = ({ result, calculateResult, ratesData, currentDate }) => {
+  const { status, currencies } = useRatesData();
   const [currency, setCurrency] = useState("");
   const [amount, setAmount] = useState("");
 
@@ -24,15 +24,21 @@ export const Form = ({ result, calculateResult, currentDate }) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    calculateResult(currency, amount);
+  
+    if (currencies && currencies) {
+      calculateResult(amount, currencies);
+    } else {
+      console.error('Brak danych w currencies');
+    }
   };
 
-  if (status === "loading" && !ratesData) {
-    return <LoadingComponent $loading="Daj nam chwilę, pobieramy dane 😎" />;
+  if (status === "loading" && !currencies) {
+    return <LoadingComponent>Daj nam chwilę, pobieramy dane 😎</LoadingComponent>
   }
 
   if (status === "error") {
-    return <ErrorComponent $error="Ups, wystąpił błąd 🤷‍♂️, odśwież stronę" />;
+    return <ErrorComponent>Ups, wystąpił błąd 🤷‍♂️, jeśli odświeżenie strony nie pomoże, 
+      jest to błąd po naszej stronie 😬</ErrorComponent>
   }
 
   if (status === "success") {
@@ -50,10 +56,10 @@ export const Form = ({ result, calculateResult, currentDate }) => {
               value={currency}
               onChange={onSelectChange}
             >
-              {ratesData && Object.keys(ratesData.data).map((rateKey) => (
+              {Object.keys(currencies).map((rateKey) => (
               <option
                 key={rateKey}
-                value={ratesData.code}
+                value={rateKey}
               >
                 {rateKey}
                 </option>
