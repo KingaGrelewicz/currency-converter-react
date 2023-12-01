@@ -15,6 +15,7 @@ import {
 } from "./styled";
 
 export const Form = ({ result, calculateResult, ratesData, currentDate }) => {
+  console.log("Received ratesData:", ratesData);
   const { status, currencies } = useRatesData();
   const [currency, setCurrency] = useState("");
   const [amount, setAmount] = useState("");
@@ -24,12 +25,9 @@ export const Form = ({ result, calculateResult, ratesData, currentDate }) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-  
-    if (currencies && currencies) {
+
+    if (currencies && currencies) 
       calculateResult(amount, currencies);
-    } else {
-      console.error('Brak danych w currencies');
-    }
   };
 
   if (status === "loading" && !currencies) {
@@ -37,7 +35,7 @@ export const Form = ({ result, calculateResult, ratesData, currentDate }) => {
   }
 
   if (status === "error") {
-    return <ErrorComponent>Ups, wystąpił błąd 🤷‍♂️, jeśli odświeżenie strony nie pomoże, 
+    return <ErrorComponent>Ups, wystąpił błąd 🤷‍♂️, jeśli odświeżenie strony nie pomoże,
       jest to błąd po naszej stronie 😬</ErrorComponent>
   }
 
@@ -56,12 +54,11 @@ export const Form = ({ result, calculateResult, ratesData, currentDate }) => {
               value={currency}
               onChange={onSelectChange}
             >
-              {Object.keys(currencies).map((rateKey) => (
-              <option
-                key={rateKey}
-                value={rateKey}
-              >
-                {rateKey}
+              {currencies && currencies.map((currency) => (
+                <option 
+                  key={currency} 
+                  value={currency}>
+                  {currency}
                 </option>
               ))}
             </FormElement>

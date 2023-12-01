@@ -16,16 +16,16 @@ export const useRatesData = () => {
 
                 const response = await axios.get("../rates.json");
                 const metaDate = response.data.meta.last_updated_at;
-
                 const formattedDate = new Date(metaDate).toLocaleString();
-                console.log(ratesData);
+                console.log("RatesData:", ratesData);
                 setRatesData({
                     status: "success",
-                    currencies: response.data.data,
-                    rate: response.data.value,
-                    date: formattedDate, 
+                    currencies: Object.keys(response.data.data)
+                        .map(key => response.data.data[key].code),
+                    rate: Object.values(response.data.data).map(item => item.value),
+                    date: formattedDate,
                 });
-                
+
             } catch (error) {
                 console.error(error);
                 setRatesData({
