@@ -5,24 +5,29 @@ import { GlobalStyled } from "./styled";
 import { useRatesData } from "./Form/useRatesData";
 
 function App() {
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState({
+    sourceAmount: 0,
+    targetAmount: 0,
+    currency: "",
+  });
   const { status, currencies, rate, date } = useRatesData("");
 
   const calculateResult = (currency, amount) => {
-    console.log("ratesData1:", status, currencies, rate, date);
-
     if (currencies && rate) {
       const currencyIndex = currencies.findIndex(code => code === currency);
 
       if (currencyIndex !== -1) {
         const currencyValue = rate[currencyIndex];
+        
 
         try {
-          setResult({
+          setResult(prevResult => ({
+            ...prevResult,
             sourceAmount: +amount,
-            targetAmount: amount / currencyValue,
+            targetAmount: +amount / (currencyValue || 1),
             currency,
-          });
+          }));
+
         } catch (error) {
           console.error(error);
         }
