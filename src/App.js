@@ -6,16 +6,16 @@ import { useRatesData } from "./Form/useRatesData";
 
 function App() {
   const [result, setResult] = useState("");
-  const { ratesData } = useRatesData("");
+  const { status, currencies, rate, date } = useRatesData("");
 
-  const calculateResult = (amount, currency) => {
-    console.log("ratesData:", ratesData);
+  const calculateResult = (currency, amount) => {
+    console.log("ratesData1:", status, currencies, rate, date);
 
-    if (ratesData && ratesData.currencies && ratesData.rate) {
-      const currencyIndex = ratesData.currencies.findIndex(code => code === currency);
+    if (currencies && rate) {
+      const currencyIndex = currencies.findIndex(code => code === currency);
 
       if (currencyIndex !== -1) {
-        const currencyValue = ratesData.rate[currencyIndex];
+        const currencyValue = rate[currencyIndex];
 
         try {
           setResult({
@@ -36,7 +36,7 @@ function App() {
       <Form
         result={result}
         calculateResult={calculateResult}
-        ratesData={ratesData}
+        ratesData={{ status, currencies, rate, date }}
       />
     </StyledContainer>
   );

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Result } from "./Result";
 import { Clock } from "./Clock";
-import { useRatesData } from "./useRatesData"
 import { Footer } from "./Footer";
 import {
   StyledForm,
@@ -14,9 +13,9 @@ import {
   LoadingComponent
 } from "./styled";
 
-export const Form = ({ result, calculateResult, ratesData, currentDate }) => {
+export const Form = ({ ratesData, result, calculateResult, currentDate }) => {
   console.log("Received ratesData:", ratesData);
-  const { status, currencies } = useRatesData();
+  const { status, currencies } = ratesData;
   const [currency, setCurrency] = useState("");
   const [amount, setAmount] = useState("");
 
@@ -26,8 +25,8 @@ export const Form = ({ result, calculateResult, ratesData, currentDate }) => {
   const onFormSubmit = (event) => {
     event.preventDefault();
 
-    if (currencies && currencies) 
-      calculateResult(amount, currencies);
+    if (currency && currency) 
+      calculateResult(currency, amount);
   };
 
   if (status === "loading" && !currencies) {
