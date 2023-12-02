@@ -15,19 +15,16 @@ export const useRatesData = () => {
                 await new Promise((resolve) => setTimeout(resolve, 1000));
 
                 const response = await axios.get("/rates.json");
-                console.log("Response data:", response.data);
-
-                console.log("Before setRatesData:", ratesData);
+                const metaDate = response.data.meta.last_updated_at;
+                const formattedDate = new Date(metaDate).toLocaleString();
 
                 setRatesData({
                     status: "success",
                     currencies: Object.keys(response.data.data)
                         .map(key => response.data.data[key].code),
                     rate: Object.values(response.data.data).map(item => item.value),
-                    // date: formattedDate,
+                    date: formattedDate,
                 });
-
-                console.log("After setRatesData:", ratesData);
 
             } catch (error) {
                 console.error(error);
@@ -35,7 +32,7 @@ export const useRatesData = () => {
                     status: "error",
                     currencies: null,
                     rate: null,
-                    // date: null,
+                    date: null,
                 });
             }
         };

@@ -14,7 +14,6 @@ import {
 } from "./styled";
 
 export const Form = ({ ratesData, result, calculateResult, currentDate }) => {
-  console.log("Received ratesData:", ratesData);
   const { status, currencies } = ratesData;
   const [currency, setCurrency] = useState("");
   const [amount, setAmount] = useState("");
