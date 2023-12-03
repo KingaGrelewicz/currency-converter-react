@@ -45,23 +45,6 @@ export const Form = ({ ratesData, result, calculateResult, currentDate, isResult
           Pola wymagane oznaczone są *
         </RequiredText>
         <p>
-          <LabelName> Wybierz walutę:
-            <FormElement
-              value={currency}
-              onChange={onSelectChange}
-            >
-              <option value="" disabled>Wybierz z listy</option>
-              {currencies && currencies.map((currency) => (
-                <option 
-                  key={currency} 
-                  value={currency}>
-                  {currency}
-                </option>
-              ))}
-            </FormElement>
-          </LabelName>
-        </p>
-        <p>
           <LabelName>
             Kwota w złotówkach*:
             <FormElement
@@ -76,6 +59,23 @@ export const Form = ({ ratesData, result, calculateResult, currentDate, isResult
               step="any"
               required
             />
+          </LabelName>
+        </p>
+        <p>
+          <LabelName> Wybierz walutę:
+            <FormElement
+              value={currency}
+              onChange={onSelectChange}
+            >
+              <option value="" disabled>Wybierz z listy</option>
+              {currencies && currencies.map((currency) => (
+                <option 
+                  key={currency} 
+                  value={currency}>
+                  {currency}
+                </option>
+              ))}
+            </FormElement>
           </LabelName>
         </p>
         <p>
