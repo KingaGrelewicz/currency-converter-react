@@ -13,7 +13,7 @@ export const useRatesData = () => {
         const fetchData = async () => {
             try {
                 await new Promise((resolve) => setTimeout(resolve, 1000));
-                const response = await axios.get("https://api.currencyapi.com/v3/latest?apikey=cur_live_etULAae4hL6redqwftsRZRwwZliL1twfy51hbI5m&currencies=EUR%2CUSD%2CCAD");
+                const response = await axios.get("https://api.currencyapi.com/v3/latest?apikey=cur_live_etULAae4hL6redqwftsRZRwwZliL1twfy51hbI5m&currencies=EUR%2CUSD%2CCAD&base_currency=PLN");
 
                 setRatesData({
                     status: "success",
