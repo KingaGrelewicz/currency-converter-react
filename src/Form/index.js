@@ -13,8 +13,8 @@ import {
   LoadingComponent
 } from "./styled";
 
-export const Form = ({ ratesData, result, calculateResult, currentDate }) => {
-  const { status, currencies } = ratesData;
+export const Form = ({ ratesData, result, calculateResult, currentDate, isResultVisible }) => {
+  const { status, currencies, date } = ratesData;
   const [currency, setCurrency] = useState("");
   const [amount, setAmount] = useState("");
 
@@ -23,9 +23,7 @@ export const Form = ({ ratesData, result, calculateResult, currentDate }) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-
-    if (currency && currency) 
-      calculateResult(currency, amount);
+    calculateResult(currency, amount);
   };
 
   if (status === "loading" && !currencies) {
@@ -52,6 +50,7 @@ export const Form = ({ ratesData, result, calculateResult, currentDate }) => {
               value={currency}
               onChange={onSelectChange}
             >
+              <option value="" disabled>Wybierz z listy</option>
               {currencies && currencies.map((currency) => (
                 <option 
                   key={currency} 
@@ -82,8 +81,8 @@ export const Form = ({ ratesData, result, calculateResult, currentDate }) => {
         <p>
           <FormButton>Przelicz</FormButton>
         </p>
-        <Result result={result} />
-        <Footer />
+        <Result result={result} isResultVisible={isResultVisible} />
+        <Footer date={ratesData.date}/>
       </StyledForm >
     )
   }
