@@ -10,6 +10,7 @@ function App() {
     targetAmount: 0,
     currency: "",
   });
+  const [isResultVisible, setIsResultVisible] = useState(false);
   const { status, currencies, rate, date } = useRatesData("");
 
   const calculateResult = (currency, amount) => {
@@ -17,17 +18,17 @@ function App() {
       const currencyIndex = currencies.findIndex(code => code === currency);
 
       if (currencyIndex !== -1) {
-        const currencyValue = rate[currencyIndex];
-        
+        const currencyValue = rate[currencyIndex];     
 
         try {
           setResult(prevResult => ({
             ...prevResult,
             sourceAmount: +amount,
-            targetAmount: +amount / (currencyValue || 1),
+            targetAmount: +amount * (currencyValue || 1),
             currency,
           }));
 
+          setIsResultVisible(true);
         } catch (error) {
           console.error(error);
         }
@@ -42,6 +43,7 @@ function App() {
         result={result}
         calculateResult={calculateResult}
         ratesData={{ status, currencies, rate, date }}
+        isResultVisible={isResultVisible}
       />
     </StyledContainer>
   );
