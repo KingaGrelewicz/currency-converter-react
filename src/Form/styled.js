@@ -82,6 +82,8 @@ export const ErrorComponent = styled.div`
     box-shadow: 5px 4px 18px -4px ${({theme}) => theme.colors.springLeaves};
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 400px;
 `;
 
 export const LoadingComponent = styled.p`
@@ -93,4 +95,6 @@ export const LoadingComponent = styled.p`
     box-shadow: 5px 4px 18px -4px ${({theme}) => theme.colors.springLeaves};
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 400px;
 `;
