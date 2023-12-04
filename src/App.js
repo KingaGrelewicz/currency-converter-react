@@ -5,34 +5,25 @@ import { GlobalStyled } from "./styled";
 import { useRatesData } from "./Form/useRatesData";
 
 function App() {
-  const [result, setResult] = useState({
-    sourceAmount: 0,
-    targetAmount: 0,
-    currency: "",
-  });
+  const [result, setResult] = useState();
   const [isResultVisible, setIsResultVisible] = useState(false);
-  const { status, currencies, rate, date } = useRatesData("");
+  const ratesData = useRatesData();
 
   const calculateResult = (currency, amount) => {
-    if (currencies && rate) {
-      const currencyIndex = currencies.findIndex(code => code === currency);
+    const currencies = ratesData.currencies[currency];
 
-      if (currencyIndex !== -1) {
-        const currencyValue = rate[currencyIndex];     
+    try {
+      const currencyData = currencies && currencies.value;
 
-        try {
-          setResult(prevResult => ({
-            ...prevResult,
-            sourceAmount: +amount,
-            targetAmount: +amount * (currencyValue || 1),
-            currency,
-          }));
+      setResult({
+        sourceAmount: +amount,
+        targetAmount: amount * currencyData,
+        currency,
+      });
 
-          setIsResultVisible(true);
-        } catch (error) {
-          console.error(error);
-        }
-      }
+      setIsResultVisible(true);
+    } catch (error) {
+      console.error(error);
     }
   }
 
@@ -42,7 +33,7 @@ function App() {
       <Form
         result={result}
         calculateResult={calculateResult}
-        ratesData={{ status, currencies, rate, date }}
+        ratesData={ratesData}
         isResultVisible={isResultVisible}
       />
     </StyledContainer>

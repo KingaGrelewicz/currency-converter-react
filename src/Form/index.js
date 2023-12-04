@@ -14,7 +14,7 @@ import {
 } from "./styled";
 
 export const Form = ({ ratesData, result, calculateResult, currentDate, isResultVisible }) => {
-  const { status, currencies, date } = ratesData;
+  const { status, currencies } = ratesData;
   const [currency, setCurrency] = useState("");
   const [amount, setAmount] = useState("");
 
@@ -68,7 +68,7 @@ export const Form = ({ ratesData, result, calculateResult, currentDate, isResult
               onChange={onSelectChange}
             >
               <option value="" disabled>Wybierz z listy</option>
-              {currencies && currencies.map((currency) => (
+              {Object.keys(currencies).map((currency) => (
                 <option 
                   key={currency} 
                   value={currency}>
