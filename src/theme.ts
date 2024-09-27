@@ -10,4 +10,4 @@ export const theme = {
         aliceBlue: "#f0f8ff",
         monza: "#db061f",
     }
-  };
+  } as const;
