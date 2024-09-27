@@ -1,6 +1,7 @@
 # Currency Converter
 
 ## Description
+
 It's the simple currency converter
 First you need to choose the currency and then fill up the form with your amount of polish zloty and push the button. Then currency converter count the amount for you, and you will know how much money you should get in chosen currency.
 
@@ -12,14 +13,17 @@ Demo [link](https://kingagrelewicz.github.io/currency-converter-react/)
 ![currencyConverter gif](public/currencyConverter.gif)
 
 ## Technologies
+
 During creating the website I was using Visual Studio Code,
-- HTML
-- CSS
+
+- Type Script
 - JavaScript
 - Create React App
 - Styled Components
-- Hooks 
-- ES6+ Features 
+- Hooks
+- ES6+ Features
+- HTML
+- CSS
 
 The website was created to response correctly on desktop, tablets, and mobile devices thanks to using media queries. I used fonts available on Google Fonts, Sharing debugger and flexbox, grid and immutability.
 
